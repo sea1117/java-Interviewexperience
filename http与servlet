@@ -1,0 +1,45 @@
+#http协议
+	协议：双方在交互、通讯的时候需要遵守的一种规范、规则。
+	http协议：针对网络上的客户端与服务器端在执行http请求的时候遵守的一种规范，规定客户端在访问
+		服务器端时需要带哪些东西，服务器端返回结果时需要携带哪些东西
+		
+	版本：1.0 请求数据，服务器返回后，将会断开连接（短连接）
+		  1.1 请求数据，服务器返回后，连接还会保持着，除非其中一方关掉或者有一定时间限制，超出
+		  时间限制，自动断开
+		  
+	http请求数据解析：请求行：POST/GET方式+请求地址路径+协议版本
+		请求头：accept：接受数据类型   reference：全路径  accept-language：支持语言 
+				user-agent ：表明客户端信息  content-type：提交的数据类型 
+				Accept-encoding：压缩格式  content-length:数据长度  host：主机地址
+				connection：keep-alive  保持连接   cache-control：对缓存的操作
+		请求体：浏览器真正发送给服务器的数据
+				key-value型数据
+				
+	http响应数据解析：响应行:版本  状态码 
+		响应头：server：服务器类型    content-type：响应的数据类型 数据长度  data：响应日期
+		响应体：返回的html
+		
+#GET和POST的区别
+	1）请求路径不同   GET在URL中有数据   Post在URL中没有数据 提交数据的方式不同，POST使用流的
+		方式提交数据，GET在URL中提交数据
+	2）安全性问题   POST安全性更高
+	3）可以提交的数据大小不同    GET提交数据大小约为1K  POST没有数据大小限制
+	使用场景：一般提交数据到服务器使用POST  从服务器获取数据且客户端不用提交数据，可以用GET
+	
+	
+#Web资源
+	静态资源： html js css
+	动态资源： servlet/jsp  
+	
+#servlet
+	概念：servlet其实就是一个java程序，运行在web服务器上，用于接受和响应客户端的请求
+	servlet编程：实现servlet接口，内有5个方法   init  destroy service getServletConfig 	
+		getServletInfo
+		servlet-----实现类HttpServlet，继承httpServlet，一般重写service方法，内含doGet
+		和doPost方法
+		
+	servlet生命周期：
+	init 初始化：单例模式  初始化一次；
+	service：该方法，每次请求都会执行一次；
+	destroy：servlet销毁的时候，就会执行；
+	getServletConfig：获取servlet配置信息；
